@@ -1,0 +1,64 @@
+<mvc:View controllerName="flightui5.flightiu5freestyle.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants">
+    <f:DynamicPage headerExpanded="true">
+        <f:header>
+
+        </f:header>
+        <f:content>
+            <Table id="table" inset="false" items="{detailModel>/}">
+                <columns>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Carrid"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Flight Date"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Airfare"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Plane Type"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Seats economy"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Seats Business"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Connection number"/>
+                    </Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Occupied seats in business"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Seats in first class"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <ObjectIdentifier title="{detailModel>Carrid}" text="{detailModel>Connid}" />
+                            <Text text="{detailModel>Fldate}" />
+                            <Text text="{detailModel>Price}" />
+                            <Text text="{detailModel>PlaneType}" />
+                            <Text text="{detailModel>SeatsMax}" />
+                            <Text text="{detailModel>SeatsOcc}" />
+                            <Text text="{detailModel>SeatsoccF}" />
+                            <Text text="{detailModel>SeatsmaxB}" />
+                            <Text text="{detailModel>SeatsoccB}" />
+                            <Button icon="sap-icon://navigation-right-arrow" type="Transparent" press="onTableSelection"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

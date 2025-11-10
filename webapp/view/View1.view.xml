@@ -1,0 +1,64 @@
+<mvc:View controllerName="flightui5.flightiu5freestyle.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants">
+    <f:DynamicPage headerExpanded="true">
+        <f:header>
+
+        </f:header>
+        <f:content>
+            <Table id="table" inset="false" items="{flightDataModel>/}">
+                <columns>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Carrier"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Currency"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Url"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Created By"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Created At"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Last changed by"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Last changed at"/>
+                    </Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Last changed at"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Status"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <ObjectIdentifier title="{flightDataModel>Carrid}" text="{flightDataModel>Carrname}" />
+                            <Text text="{flightDataModel>Currcode}" />
+                            <Text text="{flightDataModel>Url}" />
+                            <Text text="{flightDataModel>LocalCreatedBy}" />
+                            <Text text="{flightDataModel>LocalCreatedAt}" />
+                            <Text text="{flightDataModel>LocalLastChangedBy}" />
+                            <Text text="{flightDataModel>LocalLastChangedAt}" />
+                            <Text text="{flightDataModel>LastChangedAt}" />
+                            <Text text="{flightDataModel>Status}" />
+                            <Button icon="sap-icon://navigation-right-arrow" type="Transparent" press="onTableSelection"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
