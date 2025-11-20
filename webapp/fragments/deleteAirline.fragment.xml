@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+    <Dialog id="deleteDialog" title="Delete Airline">
+        <content>
+            <form:SimpleForm id="simpleFormUpdateDialog">
+                <form:content>
+                    <Label id="label_122" text="{i18n>Carrid}" required="true" />
+                    <Input id="carrIDInput2" editable="false" />
+                    <Label id="label_123" text="{i18n>Carrname}" />
+                    <Input id="carrNameInput2" editable="false" />
+                    <Label id="label_22" text="{i18n>Currcode}" />
+                    <Input id="currCodeInput2" editable="false" />
+                    <Label id="label_12" text="{i18n>Url}" />
+                    <Input id="URLInput2" editable="false" />
+                    
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button id="deleteBtn" text="Delete" press="onDeleteRecord" />
+        </beginButton>
+        <endButton>
+            <Button id="cancelDeleteBtn" text="Cancel" press="onCancelRecord" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

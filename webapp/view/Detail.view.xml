@@ -1,64 +1,133 @@
 <mvc:View controllerName="flightui5.flightiu5freestyle.controller.Detail"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
-    xmlns="sap.m"
-    xmlns:f="sap.f"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:svm="sap.ui.comp.smartvariants">
-    <f:DynamicPage headerExpanded="true">
-        <f:header>
+    xmlns="sap.uxap"
+    xmlns:m="sap.m">
 
-        </f:header>
-        <f:content>
-            <Table id="table" inset="false" items="{detailModel>/}">
-                <columns>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Carrid"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Flight Date"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Airfare"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Plane Type"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Seats economy"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Seats Business"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Connection number"/>
-                    </Column>
-					<Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Occupied seats in business"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="Seats in first class"/>
-                    </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem vAlign="Middle">
-                        <cells>
-                            <ObjectIdentifier title="{detailModel>Carrid}" text="{detailModel>Connid}" />
-                            <Text text="{detailModel>Fldate}" />
-                            <Text text="{detailModel>Price}" />
-                            <Text text="{detailModel>PlaneType}" />
-                            <Text text="{detailModel>SeatsMax}" />
-                            <Text text="{detailModel>SeatsOcc}" />
-                            <Text text="{detailModel>SeatsoccF}" />
-                            <Text text="{detailModel>SeatsmaxB}" />
-                            <Text text="{detailModel>SeatsoccB}" />
-                            <Button icon="sap-icon://navigation-right-arrow" type="Transparent" press="onTableSelection"/>
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
-        </f:content>
-    </f:DynamicPage>
+    <ObjectPageLayout id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        isChildPage="true"
+        upperCaseAnchorBar="false">
+
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitle1">
+                <expandedHeading>
+                    <m:Title id="_IDGenTitle"
+                             text="{detailModel>/Carrname}"
+                             wrapping="true"
+                             class="sapUiSmallMarginEnd"/>
+                </expandedHeading>
+                <snappedHeading>
+                    <m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+                        <m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+                            <m:Avatar src="{path: 'detailModel>/Carrid', formatter: '.formatter.getCarrierLogo'}"
+                                      displaySize="S"
+                                      displayShape="Square"/>
+                            <m:Title text="{detailModel>/Carrname}" wrapping="true" class="sapUiTinyMarginEnd"/>
+                        </m:FlexBox>
+                    </m:FlexBox>
+                </snappedHeading>
+
+                <navigationActions>
+                    <m:OverflowToolbarButton type="Transparent" icon="sap-icon://full-screen"
+                        press="handleFullScreen" tooltip="Enter Full Screen Mode"
+                        visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
+                    <m:OverflowToolbarButton type="Transparent" icon="sap-icon://exit-full-screen"
+                        press="handleExitFullScreen" tooltip="Exit Full Screen Mode"
+                        visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"/>
+                    <m:OverflowToolbarButton type="Transparent" icon="sap-icon://decline"
+                        press="handleClose" tooltip="Close column"
+                        visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
+                </navigationActions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+
+                <m:Avatar id="_IDGenAvatar1"
+                          src="{path: 'detailModel>/Carrid', formatter: '.formatter.getCarrierLogo'}"
+                          displaySize="L"
+                          displayShape="Square"
+                          class="sapUiTinyMarginEnd"/>
+
+                <m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <m:Label text="Airline ID"/>
+                    <m:Text text="{detailModel>/Carrid}"/>
+                </m:VBox>
+
+
+                <m:VBox id="_IDGenVBox1" justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <m:Label id="_IDGenLabel1" text="URL"/>
+                    <m:Text id="_IDGenText31" text="{
+                    parts: [
+                        {path: 'detailModel>/Url'},
+                        {path: 'detailModel>/Carrname'}
+                    ],
+            formatter: '.formatter.getCarrierUrl'
+        }"/>
+                        </m:VBox>
+
+                <m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <m:Label text="Currency"/>
+                    <m:ObjectNumber number="{detailModel>/Currcode}" emphasized="false"/>
+                </m:VBox>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection title="General Information">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Table items="{ path: 'detailModel>/' }">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar>
+                                        <m:Title text="{i18n>Details:}" level="H2"/>
+                                        <m:ToolbarSpacer/>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+
+                                <m:columns>
+                                    <m:Column><m:Text text="{i18n>connNo}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>flightDate}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>airfare}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>airlineLocalCurrency}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>maxTypeEco}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>occSeatsEco}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>maxTypeBsns}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>occSeatsBsns}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>maxTypeFrst}"/></m:Column>
+                                    <m:Column><m:Text text="{i18n>occSeatsFrst}"/></m:Column>
+                                </m:columns>
+
+                                <m:items>
+                                    <m:ColumnListItem vAlign="Middle"
+                                        highlight="{= ${detailModel>SeatsOcc} > 180 ? 'Success' : 'Error' }">
+                                        <m:cells>
+                                            <m:Text text="{detailModel>Connid}" wrapping="false"/>
+                                            <m:Text text="{path: 'detailModel>Fldate', type: 'sap.ui.model.type.Date',
+                                                           formatOptions: {pattern: 'MM/dd/yyyy'} }" wrapping="false"/>
+                                            <m:Text text="{detailModel>Price}"/>
+                                            <m:Text text="{detailModel>Currency}"/>
+                                            <m:Text text="{detailModel>PlaneType}"/>
+                                            <m:Text text="{detailModel>SeatsMax}"/>
+                                            <m:Text text="{detailModel>SeatsOcc}"/>
+                                            <m:Text text="{detailModel>PaymentSum}"/>
+                                            <m:Text text="{detailModel>SeatsmaxB}"/>
+                                            <m:Text text="{detailModel>SeatsoccB}"/>
+                                            <m:Text text="{detailModel>SeatsmaxF}"/>
+                                            <m:Text text="{detailModel>SeatsoccF}"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
 </mvc:View>

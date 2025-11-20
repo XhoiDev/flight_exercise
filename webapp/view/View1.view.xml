@@ -8,9 +8,19 @@
     <f:DynamicPage headerExpanded="true">
         <f:header>
 
+
         </f:header>
         <f:content>
-            <Table id="table" inset="false" items="{flightDataModel>/}">
+            <Table id="table" items="{flightDataModel>/}" mode="SingleSelectLeft">
+               <headerToolbar>
+		     <OverflowToolbar id="_IDGenOverflowToolbar"> 
+				<Title id="_IDGenTitlee" text="{test}" level="H2"/>
+				<ToolbarSpacer id="_IDGenToolbarSpacer"/>
+				<Button id="button1" text="Update" press="onUpdate" />
+                <Button id="button2" text="Create" press="onCreateRecord" />
+                <Button id="button3" text="Delete" press="onDelete" />
+			  </OverflowToolbar> 
+		     </headerToolbar>
                 <columns>
                     <Column minScreenWidth="Tablet" demandPopin="true">
                         <Text text="Carrier"/>

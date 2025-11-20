@@ -105,20 +105,20 @@
             "TargetView1"
           ]
         },
-      {
-        "name": "RouteDetailView",
-        "pattern": "Detail/{index}",
-        "target": [
-          "TargetDetailView"
-      ]
-      }
+        {
+          "name": "RouteDetailView",
+          "pattern": "Detail/{index}",
+          "target": [
+            "TargetDetailView"
+          ]
+        }
       ],
       "targets": {
         "TargetView1": {
           "id": "View1",
           "name": "View1"
         },
-        "TargetDetailView":{
+        "TargetDetailView": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,

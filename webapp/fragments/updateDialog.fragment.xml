@@ -1,0 +1,26 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    <Dialog id="updateDialog" title="Update airline">
+        <content>
+            <form:SimpleForm id="updateFormDialog">
+                <form:content>
+                    <Label id="label_6" text="{i18n>Carrid}" required="true" />
+                    <Input id="carrIDInput1" editable="true" />
+                    <Label id="label_1" text="{i18n>Carrname}" />
+                    <Input id="carrNameInput1" editable="true" />
+                    <Label id="label_2" text="{i18n>Currcode}" />
+                    <Input id="currCodeInput1" editable="true" />
+                    <Label id="label_3" text="{i18n>Url}" />
+                    <Input id="URLInput1" editable="true" />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button id="updateBtn" text="Create" press="onUpdateRecord" />
+        </beginButton>
+        <endButton>
+            <Button id="cancelBtn" text="Cancel" press="onCancelRecord" />
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>
